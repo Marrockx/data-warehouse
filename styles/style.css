@@ -392,6 +392,43 @@ body {
 	background-image: url("../img/clip-paths/one.png");
 }
 
+.bean-1 {
+	z-index: 1;
+	position: absolute;
+	top: 30px;
+	right: 40px;
+}
+
+.circle-1 {
+	position: absolute;
+	top: 75px;
+	right: 120px;
+}
+
+.bean-2 {
+	position: absolute;
+	bottom: 40px;
+	right: 24px;
+}
+
+.circle-3 {
+	position: absolute;
+	top: 20px;
+	right: 40px;
+}
+
+.bean-4 {
+	position: absolute;
+	top: 20px;
+	left: 36px;
+}
+
+.circle-4 {
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+}
+
 .feature-info.feat-two {
 	background-image: url("../img/clip-paths/two.png");
 }
@@ -412,9 +449,11 @@ body {
 	font-size: 24px;
 	line-height: 130%;
 	color: #212353;
+	z-index: 2;
 }
 
 .feature-info .feature-description {
+	z-index: 2;
 	margin: 0;
 	max-width: 220px;
 	/* padding: 2.4rem 0; */
@@ -484,16 +523,14 @@ body {
 	display: flex;
 	flex-direction: row;
 	width: 2400px;
-	/* width: 100%; */
-	/* overflow: scroll; */
-	overflow-y: scroll;
+	overflow: scroll;
+	/* overflow-y: scroll; */
 }
 
 .testimonials-slider {
-	width: 100%;
+	/* width: 100%; */
 	overflow-x: scroll;
 	scrollbar-color: #9c69e2;
-	scrollbar-arrow-color: #9c69e2;
 	/* touch-action: cross-slide-x; */
 }
 
