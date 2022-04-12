@@ -369,9 +369,6 @@ body {
 	left: -1%;
 }
 
-.feature-card img {
-}
-
 .feature-card .feature-info {
 	/* background-color: #dee0f3;
 	border-radius: 50px;
@@ -526,10 +523,16 @@ body {
 	overflow: scroll;
 	/* overflow-y: scroll; */
 }
-
+.testimonials-slider::-webkit-scrollbar {
+	display: none;
+}
+.testimonials-slider {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
 .testimonials-slider {
 	/* width: 100%; */
-	overflow-x: scroll;
+	overflow-x: auto;
 	scrollbar-color: #9c69e2;
 	/* touch-action: cross-slide-x; */
 }
