@@ -19,6 +19,8 @@ body {
 	padding: 0;
 	outline: 0;
 	margin: 0 auto;
+	background-color: #e5e5e5;
+	background: linear-gradient(180deg, #f6fafd 0%, #ffffff 19.4%);
 	font-family: "Avenir", serif;
 	font-family: var(--normal-text), Avenir, serif;
 	font-size: 16px;
@@ -519,12 +521,13 @@ body {
 .testimonial .carousel {
 	display: flex;
 	flex-direction: row;
-	width: 2400px;
-	overflow: scroll;
+	width: 1800px;
+	/* overflow: scroll; */
 	/* overflow-y: scroll; */
 }
 .testimonials-slider::-webkit-scrollbar {
 	display: none;
+	scrollbar-track-color: transparent;
 }
 .testimonials-slider {
 	-ms-overflow-style: none;
@@ -558,7 +561,7 @@ body {
 	margin-right: 1.2rem;
 	margin-bottom: 3.6rem;
 	position: relative;
-	/* overflow: hidden; */
+	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
@@ -583,7 +586,9 @@ body {
 	border-radius: 20px;
 	box-shadow: 0px 20px 0px #f6f0fd;
 	border: 1px solid #9c69e2;
-
+	padding-left: 2.4rem;
+	padding-right: 2.4rem;
+	padding-bottom: 3rem;
 	background: linear-gradient(90deg, #ffffff 40%, rgb(255, 255, 255) 100%);
 	opacity: 0.95;
 }
@@ -670,8 +675,8 @@ body {
 	transition: background-color 0.6s ease;
 }
 
-.testimonial-dots-indicator.selected-testimonial,
-.testimonial-dots-indicator:hover {
+.testimonial-dots-indicator:hover,
+.testimonial-dots-indicator.selected-testimonial {
 	background-color: #f063b8;
 	width: 10px;
 	height: 10px;

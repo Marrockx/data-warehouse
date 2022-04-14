@@ -15,20 +15,11 @@ let slidePosition = 0;
 
 // console.log(totalSlides);
 
-slideOne.addEventListener('click', () => {
-    slidePosition = 0;
-    updateSlidePosition();
-});
+slideOne.addEventListener('click', goToSlideOne);
 
-slideTwo.addEventListener('click', () => {
-    slidePosition = 1;
-    updateSlidePosition();
-});
+slideTwo.addEventListener('click', goToSlideTwo);
 
-slideThree.addEventListener('click', () => {
-    slidePosition = 2;
-    updateSlidePosition();
-});
+slideThree.addEventListener('click', goToSlideThree);
 
 
 previousSlide.addEventListener('click', prevSlide);
@@ -60,15 +51,33 @@ function updateSlidePosition() {
         slides[slidePosition].classList.remove('card-hidden');
         slides[slidePosition].classList.add('card-visible');
 
+        for (dot of sliderDots) {
+            dot.classList.remove("selected-testimonial")
+            sliderDots[slidePosition].classList.add('selected-testimonial');
+
+        }
+
     }
+
+
 }
 
-function updateSliderIndicator() {
-    for (dot of sliderDots) {
-        dot.classList.remove("selected-testimonial")
-        sliderDots[slidePosition].classList.add('selected-testimonial');
+function goToSlideOne() {
+    slidePosition = 0;
+    updateSlidePosition();
 
-    }
+}
+
+function goToSlideTwo() {
+    slidePosition = 1;
+    updateSlidePosition();
+
+}
+
+function goToSlideThree() {
+    slidePosition = 2;
+    updateSlidePosition();
+
 }
 
 function goToPrevSlide() {
@@ -78,7 +87,7 @@ function goToPrevSlide() {
         slidePosition--;
     }
     updateSlidePosition();
-    updateSliderIndicator();
+    // updateSliderIndicator();
 
 }
 
@@ -90,7 +99,7 @@ function goToNextSlide() {
     }
 
     updateSlidePosition();
-    updateSliderIndicator();
+    // updateSliderIndicator();
 
 }
 
