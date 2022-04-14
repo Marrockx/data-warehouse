@@ -890,22 +890,20 @@ body {
 	bottom: 6rem;
 	right: 12%;
 	background-color: #ebe1f9;
-	/* opacity: 0.2; */
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 }
 
-.chat-help-link {
+.chat-help .chat-help-link {
 	cursor: pointer;
 	color: #9c69e2;
-	opacity: 1;
-	font-size: 1.4rem;
 	text-align: center;
+	height: 29px;
 }
 
 /* RESPONSIVENESS - MEDIA QUERIES */
