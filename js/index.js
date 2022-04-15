@@ -1,4 +1,6 @@
 const slides = document.getElementsByClassName('testimonial-card');
+const hiddenCards = document.getElementsByClassName('card-hidden');
+// console.log(hiddenCards)
 
 const totalSlides = slides.length;
 
@@ -47,6 +49,7 @@ function updateSlidePosition() {
     for (let slide of slides) {
         slide.classList.remove("card-visible");
         slide.classList.add("card-hidden");
+        // slide.style
 
         slides[slidePosition].classList.remove('card-hidden');
         slides[slidePosition].classList.add('card-visible');

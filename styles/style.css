@@ -534,9 +534,10 @@ body {
 	scrollbar-width: none;
 }
 .testimonials-slider {
-	/* width: 100%; */
+	width: fit-content;
 	overflow-x: auto;
 	scrollbar-color: #9c69e2;
+	height: auto;
 	/* touch-action: cross-slide-x; */
 }
 
@@ -553,14 +554,11 @@ body {
 	/* z-index: 15; */
 	background-color: #ffffff;
 	box-shadow: 0px 20px 0px #8a56da;
-
-	/* 3 */
 	border: 1px solid #9c69e2;
 	box-sizing: border-box;
 	border-radius: 20px;
 	margin-right: 1.2rem;
 	margin-bottom: 3.6rem;
-	position: relative;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -584,14 +582,46 @@ body {
 .testimonial-card.card-hidden {
 	width: 20%;
 	border-radius: 20px;
-	box-shadow: 0px 20px 0px #f6f0fd;
+	box-shadow: 0px 20px 0px rgba(151, 99, 224, 0.4);
 	border: 1px solid #9c69e2;
 	padding-left: 2.4rem;
 	padding-right: 2.4rem;
 	padding-bottom: 3rem;
-	background: linear-gradient(90deg, #ffffff 40%, rgb(255, 255, 255) 100%);
-	opacity: 0.95;
+	/* position: absolute; */
+
+	/* background: linear-gradient(90deg, #ffffff 40%, rgb(255, 255, 255) 100%);
+	 */
+	background-color: linear-gradient(
+		270deg,
+		#ffffff 9.75%,
+		rgba(255, 255, 255, 0) 100%
+	);
+	/* opacity: 0.95; */
 }
+
+/* .testimonial-card.card-hidden:first-child.first-card {
+	right: -2.5%;
+}
+
+.testimonial-card.card-hidden:first-child.second-card {
+	right: 19%;
+}
+
+.testimonial-card.card-hidden:first-child.third-card {
+	right: 19%;
+}
+
+.testimonial-card.card-hidden:last-child.first-card {
+	right: -2.5%;
+}
+
+.testimonial-card.card-hidden:nth-child(2n).second-card {
+	right: 19%;
+}
+
+.testimonial-card.card-hidden:last-child.third-card {
+	right: -2.5%;
+} */
 
 /* .testimonial-card:hover,
 .testimonial-card.card-visible:hover,
@@ -622,8 +652,6 @@ body {
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.005em;
-
-	/* 2 */
 	color: #212353;
 }
 
@@ -633,13 +661,9 @@ body {
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 160%;
-
-	/* or 22px */
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.01em;
-
-	/* 3 */
 	color: #9c69e2;
 }
 
@@ -1027,6 +1051,12 @@ body {
 		flex-direction: column;
 		align-items: flex-start;
 		padding: 1.2rem;
+		height: auto;
+		width: 75vw;
+	}
+
+	.testimonial-card.card-hidden {
+		display: none;
 	}
 
 	.testimonial-card .user-profile {
