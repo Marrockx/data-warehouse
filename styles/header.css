@@ -1,0 +1,65 @@
+/** @format */
+
+@import "style.css";
+
+.header {
+	/* padding: 4.1rem; */
+	/* width: 100vw; */
+	display: flex;
+	flex-direction: row;
+	padding: 2.8rem 0;
+	align-items: center;
+	justify-content: space-between;
+	/* height: 20vh; */
+}
+
+/* .logo {
+} */
+
+/* NAVIGATION  */
+
+.top-menu {
+	margin-left: -30%;
+}
+
+.nav-group {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.nav-group.top-menu-wrap {
+	display: inline-flex;
+	flex-direction: row;
+}
+
+.nav-group .nav-item {
+	padding: 1.3rem;
+}
+
+.nav-group .nav-item > .nav-link {
+	text-decoration: none;
+}
+
+.nav-link {
+	cursor: pointer;
+	font-family: "Avenir";
+	font-style: normal;
+	font-weight: 500;
+	color: #4b5d68;
+}
+
+.nav-link:hover {
+	animation: active 3s ease-in-out infinite forwards;
+}
+
+@keyframes active {
+	50% {
+		font-weight: 800;
+		color: #212353;
+	}
+}
+
+.nav-link:active {
+	font-weight: 800;
+	color: #212353;
+}

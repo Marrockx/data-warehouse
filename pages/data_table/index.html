@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Data</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+    <link rel="stylesheet" href="/pages/data_table/css/table.css">
+    <link rel="stylesheet" href="/pages/data_table/css/form.css">
+    <link rel="stylesheet" href="/pages/data_table/css/modal.css">
+    <script src="https://kit.fontawesome.com/ae290129ba.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="#" class="logo flex-item"><img src="/img/logo.svg" alt="site logo" /></a>
+            <nav class="top-menu">
+                <ul class="nav-group top-menu-wrap">
+                    <li class="nav-item flex-item">
+                        <a href="/#about-section" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/#help-section" class="nav-link">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/#features-section" class="nav-link">Features</a>
+                    </li>
+                    <li class="nav-item"><a href="/#" class="nav-link">Signup</a></li>
+                </ul>
+            </nav>
+            <button class="action-btn">
+                <span class="button-text">Request Demo</span>
+                <span class="btn-click-arrow"><i class="fa-solid fa-arrow-right-long"></i></span>
+            </button>
+        </header>
+
+        <!-- MAIN PAGE CONTENT -->
+        <main class="db-content">
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <div class="table-info">
+                        <h1 class="table-heading">Warehouse Database</h1>
+                        <p class="table-description">
+                            This displays list of items stored in the warehouse. <br>
+                            It serves as a form of reference and database from data collection.
+                        </p>
+                    </div>
+                    <button class="open-modal solid-btn">Add New Item
+                        <span class="add-sign">&plus;</span>
+                    </button>
+                    <thead class="data-table-header-group">
+                        <tr class="data-table-header-row">
+                            <th class="data-table-heading">ID
+                                <span class="heading-highlight">(#)</span>
+                            </th>
+                            <th class="data-table-heading">Item Name</th>
+                            <th class="data-table-heading">Item Price
+                                <span class="heading-highlight">(currency)</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="data-table-body-group">
+                        <!-- <tr class="data-table-row">
+                                <td class="data-table-cell">1</td>
+                                <td class="data-table-cell">Mari Rose</td>
+                                <td class="data-table-cell">dd</td>
+                            </tr> -->
+                        <!--
+                            <tr class="data-table-row">
+                                <td class="data-table-cell">2</td>
+                                <td class="data-table-cell">Mari Rose</td>
+                                <td class="data-table-cell">dd</td>
+                            </tr>
+                        -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="form-modal" class="modal">
+
+                <div class="modal-content">
+
+                    <form class="data-form" onsubmit="return false">
+                        <div class="form-info">
+                            <div class="modal-header">
+                                <h2 class="form-heading">Item Listing Form</h2>
+                                <span class="close">&times;</span>
+                            </div>
+                            <p class="form-description">
+                                This collects data of the items to be stored in the warehouse. <br>
+                                It provides of ease of access to items for searching purposes.
+                            </p>
+                        </div>
+
+                        <div class="form-input">
+                            <div class="first-col">
+                                <div class="input-header-group">
+
+                                    <label class="input-heading" for="item-id">ID</label>
+                                    <p class="input-description">
+                                        This value is a number that is used to identify item in warehouse.
+                                        It accepts only numbers and must be less than 200.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="second-col">
+                                <input type="number" min="1" max="200" value="" class="input-content" name="item-id"
+                                    id="item-id" maxlength="2" autocomplete="off">
+
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <div class="first-col">
+                                <div class="input-header-group">
+                                    <label class="input-heading" for="item-name">Item Name</label>
+                                    <p class="input-description">
+                                        Name of item can contain alphanumeric characters. It should not be more than
+                                        20
+                                        characters.
+                                    </p>
+                                </div>
+                                <div class="second-col">
+                                    <input type="text" value="" name="item-name" id="item-name" class="input-content"
+                                        minlength="3" maxlength="20" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <div class="first-col">
+                                <div class="input-header-group">
+                                    <label class="input-heading" for="item-price">Item Price</label>
+                                    <p class="input-description">
+                                        It should not be less than 3 or more than 11
+                                        numbers and must be of format:
+                                        [currency] xxx(,xxx)(,xxx).
+                                        <br>
+                                        <small class="description-note">Note: characters in parentheses may be
+                                            omitted.</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="input-row">
+
+                                <div class="small-col">
+
+                                    <select id="currency" name="currency" class="input-select">
+                                        <option value="₦">Naira(₦)</option>
+                                        <option value="$">Dollar($)</option>
+                                        <option value="£">Pound(£)</option>
+                                        <option value="€">Euro(€)</option>
+
+                                    </select>
+                                </div>
+                                <div class="second-col">
+
+                                    <input type="text" value="" class="input-content" name="item-price" id="item-price"
+                                        minlength="3" maxlength="11" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <button type="submit" class="solid-btn purple-btn submit-btn"
+                                disabled="true">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="horizontal-rule"></div>
+
+    <footer class="footer">
+        <!-- TRIAL - SIGN UP / CALL TO ACTION -->
+        <section class="trial-section">
+            <div class="trial-text">
+                <h2 class="sub-headline">Try for free!</h2>
+                <p class="trial-catch-phrase">
+                    Get limited 1 week free try our features!
+                </p>
+            </div>
+            <div class="trial-action-buttons">
+                <button class="solid-btn pink-btn">Learn more</button>
+                <button class="action-btn">
+                    <span class="button-text">Request Demo</span>
+                    <span class="btn-click-arrow"><i class="fa-solid fa-arrow-right-long"></i></span>
+
+                </button>
+            </div>
+        </section>
+
+
+
+        <!-- FOOTER NAVIGATION -->
+        <nav class="footer-nav">
+            <!-- COMPANY ADDRESS -->
+            <div class="company-address">
+                <div class="company">
+                    <img src="/img/logo.svg" class="logo" alt="site logo" />
+                    <span class="company-name">DataWarehouse</span>
+                </div>
+                <div class="company-location">
+                    Warehouse Society, 234
+                    <br>
+                    Bahagia Ave Street PRBW 29281
+
+                </div>
+                <div class="company-contact">
+                    <span class="company-email">info@warehouse.project</span>
+                    <br>
+                    <span class="company-cell">1-232-3434 (Main)</span>
+                </div>
+            </div>
+
+
+            <!-- <section class="footer-menu"> -->
+            <div class="nav-col about">
+                <h6 class="nav-heading">About</h6>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">Profile</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#features-section" class="sub-menu-item-link">Features</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">Careers</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">DW News</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-col help">
+                <h6 class="nav-heading">Help</h6>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">Support</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#features-section" class="sub-menu-item-link">Sign up</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">Guide</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">Reports</a>
+                    </li>
+                    <li class="sub-menu-item">
+                        <a href="#" class="sub-menu-item-link">Q&A</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-col social-media">
+                <h6 class="nav-heading">Social Media</h6>
+                <!-- use css filter prop to style -->
+                <div class="social-media-icons">
+                    <div class="social-media-icon"><a href="#" class="social-media-links"><i
+                                class="fa-brands fa-facebook-f"></i></a></div>
+                    <div class="social-media-icon"><a href="#" class="social-media-links"><i
+                                class="fa-brands fa-twitter"></i></a></div>
+                    <div class="social-media-icon"><a href="#" class="social-media-links"><i
+                                class="fa-brands fa-instagram"></i></a></div>
+                </div>
+            </div>
+            <!-- </section> -->
+        </nav>
+
+        <div class="bottom-wrap">
+            <div class="copyright">
+                © Datawarehouse™, 2020. All rights reserved.
+                <br>
+                Company Registration Number: 21479524.
+            </div>
+            <div class="chat-help">
+                <a href="#" class="chat-help-link">
+                    <img src="/img/chat.svg" alt="chat icon">
+                </a>
+            </div>
+
+
+        </div>
+    </footer>
+    <!-- <script>
+        $(document).ready(function () {
+            $('.form-input').on('input', function () {
+                if ($(this).val() != '') {
+                    $('.submit-btn').prop('disabled', false);
+                } else {
+                    $('.submit-btn').prop('disabled', true);
+                }
+            });
+        });
+
+    </script> -->
+
+    <script src="/pages/data_table/js/index.js"></script>
+    <script src="/pages/data_table/js/modal.js"></script>
+</body>
+
+
+
+</html>
