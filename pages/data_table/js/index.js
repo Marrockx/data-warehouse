@@ -1,56 +1,96 @@
 const form = document.querySelector('.data-form')
 const submitBtn = document.querySelector('.submit-btn');
-const itemID = document.querySelector('#item-id');
-const itemName = document.querySelector('#item-name');
-const itemPrice = document.querySelector('#item-price');
+
+
+var itemID = document.getElementById('item-id');
+var itemName = document.getElementById('item-name');
+var itemPrice = document.getElementById('item-price');
+
+
 const regExp = /d{3}/;
 const regExp2 = /(^[0-9]*){3,}(,*)([0-9,$]*){3}/;
 
-const tableWrap = document.querySelector('.table-wrap');
-const dataTable = document.querySelector('.data-table');
-const tableHeader = document.querySelector('.data-table-header-group');
-const dataTableHeading = document.getElementsByClassName('data-table-heading')
-const tableBody = document.querySelector('.data-table-body-group');
+var tableWrap = document.querySelector('.table-wrap');
+var dataTable = document.querySelector('.data-table');
+var tableHeader = document.querySelector('.data-table-header-group');
+var dataTableHeading = document.getElementsByClassName('data-table-heading')
+var tableBody = document.querySelector('.data-table-body-group');
+
 var select = document.querySelector('.input-select')
 
 
 var modal = document.getElementById("form-modal");
 
+var popUpText = document.querySelector(".pop-up-note");
+
+popUpText.textContent = "";
+popUpText.style.display = 'none';
 
 // submitBtn.style.backgroundColor = 'purple';
 // submitBtn.disabled = true;
 form.addEventListener('submit', submitAction);
 
 
+// clear localStorage on refresh
+
+window.onbeforeunload = function (evt) {
+    localStorage.clear();
+}
+
+
 
 function submitAction(evt) {
     evt.preventDefault();
 
-
-
-
-    validateForm();
     if (itemID.value !== '' && itemName.value !== '' && itemPrice.value !== '') {
-        appendRow();
-        modal.style.display = "none";
+        storeData(evt);
 
 
     }
+
+    modal.style.display = "none";
+    submitBtn.disabled = true;
+    submitBtn.classList.remove('purple-btn')
 }
 
-function getData() {
-    var str = localStorage.getItem("itemData");
-    if (str != '') { itemData = JSON.parse(str); }
+
+
+function storeData(evt) {
+    let itemsStore = JSON.parse(localStorage.getItem('itemsStore')) || [];
+
+    let existingData = itemsStore.length && JSON.parse(localStorage.getItem('itemsStore')).some(data => data.id == itemID.value);
+
+    if (!existingData) {
+        itemsStore.push({
+            id: itemID.value,
+            itemname: itemName.value,
+            itemprice: itemPrice.value
+        });
+
+        localStorage.setItem('itemsStore', JSON.stringify(itemsStore));
+
+        // console.log(localStorage.getItem('itemsStore'));
+        // validateForm();
+
+        appendData();
+
+        form.reset(); //reset form once data is stored
+
+    } else {
+        // alert("O");
+        popUpText.innerHTML = "Oh no! Duplicated ID found. <br> Enter another ID to store your data";
+        popUpText.style.display = "block";
+        popUpText.style.color = 'red';
+    }
+    evt.preventDefault();
+
 }
 
-function appendRow() {
+// Adding Data to display on table by fetching from store 
+// in localStorage
 
-    var itemData = new Array();
-    // itemData.push(dataTableHeading);
-    itemData.push(["iD", "itemName", "itemPrice"])
-    console.log(itemData)
-
-    getData();
+function appendData() {
+    // console.log(localStorage.getItem('itemsStore'));
 
     select.addEventListener('change', selectVal);
 
@@ -58,99 +98,95 @@ function appendRow() {
         var option = select.options[select.selectedIndex].value;
         return option;
     }
-    itemData.push([itemID.value, itemName.value, selectVal() + (itemPrice.value)]);
 
-    localStorage.setItem("itemData", JSON.stringify(itemData));
+    if (localStorage.getItem('itemsStore')) {
 
-    // var colCt = dataTableHeading.length;
-    var colCt = itemData[0].length;
+        tableBody.innerHTML = "";
 
 
-    for (var i = 1; i < itemData.length; i++) {
-        row = tableBody.insertRow(-1);
-        row.classList.add('data-table-row');
+        JSON.parse(localStorage.getItem('itemsStore')).forEach(data => {
 
-        for (var j = 0; j < colCt; j++) {
-            var cell = row.insertCell(-1);
-            cell.classList.add('data-table-cell')
-            cell.innerHTML = itemData[i][j];
+            tableBody.innerHTML += `
+                        <tr class="data-table-row">                
+                            <td class="data-table-cell">${data.id}</td>
+                            <td class="data-table-cell">${data.itemname}</td>
+                            <td class="data-table-cell">${selectVal() + data.itemprice}</td>
+                        </tr>
+             `;
 
-            // if (cell)
-
-        }
-        // tableBody.innerHTML = "";
-        tableBody.appendChild(row);
-
-
-
-
+        });
     }
-
-
-
-
 }
 
+appendData();
+
+
+
 const fields = document.querySelectorAll('input')
-for (let field of fields) {
-    field.addEventListener('change', validateForm, true);
+for (let i = 0; i < fields.length; i++) {
+    i = 2;
+    fields[i].addEventListener('input', validateForm);
 };
 
 
-
-function validateForm() {
+function validateForm(e) {
     if (checkID && checkName && checkPrice) {
         // submitBtn.style.backgroundColor = 'green';
         submitBtn.disabled = false;
-    } else if (!itemID.value && !itemName.value && !itemPrice.value) {
+        submitBtn.classList.add('purple-btn');
+        // submitBtn.classList.add('submit-btn');\
+
+
+
+
+    } else {
         submitBtn.disabled = true;
-        submitBtn.style.backgroundColor = 'blue';
+        submitBtn.classList.remove('purple-btn')
+        // submitBtn.style.backgroundColor = 'blue';
 
     };
 
 }
 
 
-function checkName() {
-    if (3 < itemName.value.length < 20) {
-        return true;
-    }
+function checkID() {
+    if (itemID.value !== "") {
 
+
+        if (regExp.test(itemID.value) == true) {
+            return true;
+        };
+    }
 
     return false;
 }
 
-function checkID() {
 
-    if (regExp.test(itemID.value) == true) {
+function checkName() {
+    if (itemName.value !== "") {
         return true;
-    };
-
-
+    }
     return false;
 }
 
 
 function checkPrice() {
+    if (itemPrice.value !== "") {
 
-    if (3 < itemPrice.value.length < 12) {
+
         if (regExp2.test(itemPrice.value) == true) {
             return true;
-        };
-    }
 
+        };
+
+    }
 
 
     return false;
 }
-// function checkEmpty(prop) {
-//     var itName = $(prop).attr("name");
-//     $("." + itName + "-validation").html("");
-//     $(prop).css("border", "");
-//     if ($(prop).val() == "") {
-//         $(prop).css("border", "#FF0000 1px solid");
-//         $("." + itName + "-validation").html("Required");
-//         return false;
-//     }
-//     return true;
-// } 
+
+
+const priceInfo = document.getElementById('price-desc');
+itemPrice.addEventListener('focus', function (e) {
+    priceInfo.style.display = 'block';
+})

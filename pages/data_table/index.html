@@ -54,6 +54,8 @@
                     <button class="open-modal solid-btn">Add New Item
                         <span class="add-sign">&plus;</span>
                     </button>
+                    <p class="pop-up-note"></p>
+
                     <thead class="data-table-header-group">
                         <tr class="data-table-header-row">
                             <th class="data-table-heading">ID
@@ -86,7 +88,7 @@
 
                 <div class="modal-content">
 
-                    <form class="data-form" onsubmit="return false">
+                    <form class="data-form" role="form">
                         <div class="form-info">
                             <div class="modal-header">
                                 <h2 class="form-heading">Item Listing Form</h2>
@@ -103,7 +105,11 @@
                                 <div class="input-header-group">
 
                                     <label class="input-heading" for="item-id">ID</label>
-                                    <p class="input-description">
+                                    <small class="description-note" id="id-desc">
+                                        <br>
+                                        must be a number
+                                    </small>
+                                    <p class="input-description error-text" id="id-desc">
                                         This value is a number that is used to identify item in warehouse.
                                         It accepts only numbers and must be less than 200.
                                     </p>
@@ -119,7 +125,7 @@
                             <div class="first-col">
                                 <div class="input-header-group">
                                     <label class="input-heading" for="item-name">Item Name</label>
-                                    <p class="input-description">
+                                    <p class="input-description error-text" id="name-desc">
                                         Name of item can contain alphanumeric characters. It should not be more than
                                         20
                                         characters.
@@ -135,7 +141,7 @@
                             <div class="first-col">
                                 <div class="input-header-group">
                                     <label class="input-heading" for="item-price">Item Price</label>
-                                    <p class="input-description">
+                                    <p class="input-description error-text" id="price-desc">
                                         It should not be less than 3 or more than 11
                                         numbers and must be of format:
                                         [currency] xxx(,xxx)(,xxx).
@@ -160,13 +166,13 @@
                                 <div class="second-col">
 
                                     <input type="text" value="" class="input-content" name="item-price" id="item-price"
-                                        minlength="3" maxlength="11" autocomplete="off">
+                                        minlength="3" maxlength="11" autocomplete="off"
+                                        pattern="([0-9]*){3,}(,*)([0-9,$]*){3}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-input">
-                            <button type="submit" class="solid-btn purple-btn submit-btn"
-                                disabled="true">Submit</button>
+                            <button type="submit" id="submit-btn" class="solid-btn submit-btn" disabled>Submit</button>
                         </div>
                     </form>
 
@@ -287,18 +293,7 @@
 
         </div>
     </footer>
-    <!-- <script>
-        $(document).ready(function () {
-            $('.form-input').on('input', function () {
-                if ($(this).val() != '') {
-                    $('.submit-btn').prop('disabled', false);
-                } else {
-                    $('.submit-btn').prop('disabled', true);
-                }
-            });
-        });
 
-    </script> -->
 
     <script src="/pages/data_table/js/index.js"></script>
     <script src="/pages/data_table/js/modal.js"></script>

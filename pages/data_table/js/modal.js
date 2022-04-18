@@ -1,3 +1,5 @@
+itemID = document.getElementById('item-id');
+
 // Get the modal
 var modal = document.getElementById("form-modal");
 
@@ -12,6 +14,9 @@ btn.onclick = function () {
     modal.style.display = "flex";
     modal.style.flexDirection = "column";
     modal.style.justifyContent = "center";
+
+    // itemID.focus(); // focus on ID field when new item is to be added
+
 
 }
 

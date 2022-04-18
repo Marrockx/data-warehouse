@@ -139,4 +139,13 @@
 	.table-wrap .table-info .table-heading {
 		font-size: 24px;
 	}
+
+	.data-table-heading,
+	.data-table-cell {
+		padding: 1.2rem;
+	}
+
+	.data-table-cell {
+		font-size: 20px;
+	}
 }
